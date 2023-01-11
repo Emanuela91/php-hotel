@@ -48,11 +48,28 @@
 
     ];
 
+
     ?>
 </head>
 
 <body>
 
+    <table>
+        <!-- parte header tabella -->
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Parking</th>
+                <th scope="col">Vote</th>
+                <th scope="col">Distance to Center</th>
+            </tr>
+        </thead>
+        <?php
+
+        ?>
+
+    </table>
 
 </body>
 
