@@ -65,8 +65,15 @@
                 <th scope="col">Distance to Center</th>
             </tr>
         </thead>
+        <!-- ciclo per le voci dell'array -->
         <?php
+            foreach ($hotels as $hotel) {
 
+                $name = $hotel['name'];
+                $description = $hotel['description'];
+                $parking = $hotel['parking'];
+                $vote = $hotel['vote'];
+                $distance_to_center = $hotel['distance_to_center'];
         ?>
 
     </table>
