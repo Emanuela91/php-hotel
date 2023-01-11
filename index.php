@@ -52,6 +52,8 @@
 
     // filtro per il parcheggio
     $filterParking = $_GET["parking"] ?? false;
+    // filtro voto 
+    $filterVote = $_GET["vote"] ?? 0;
     ?>
 </head>
 
@@ -63,6 +65,15 @@
         if ($filterParking) {
 
             echo "checked";
+        }
+        ?>>
+        <br>
+        <!-- input per il filtro voto -->
+        <label for="vote">Vote</label>
+        <input type="number" name="vote" <?php
+        if ($filterVote != 0) {
+
+            echo "value='" . $filterVote . "'";
         }
         ?>>
         <br>
@@ -90,8 +101,8 @@
             $vote = $hotel['vote'];
             $distance_to_center = $hotel['distance_to_center'];
 
-            // filtro per il parcheggio
-            if (!$filterParking || ($filterParking && $parking)) {
+            // filtro per il parcheggio e filtro voto
+            if ($vote >= $filterVote && (!$filterParking || ($filterParking && $parking))) {
                 echo "<tr>"
                     . "<td>" . $name . "</td>"
                     . "<td>" . $description . "</td>"
