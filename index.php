@@ -50,11 +50,24 @@
 
     ];
 
-
+    // filtro per il parcheggio
+    $filterParking = $_GET["parking"] ?? false;
     ?>
 </head>
 
 <body>
+    <!-- input per il filtro parcheggio -->
+    <form>
+        <label for="parking">Parking</label>
+        <input type="checkbox" name="parking" <?php
+        if ($filterParking) {
+
+            echo "checked";
+        }
+        ?>>
+        <br>
+        <input type="submit" value="FILTER">
+    </form>
 
     <table class="table text-center">
         <!-- parte header tabella -->
@@ -77,13 +90,17 @@
             $vote = $hotel['vote'];
             $distance_to_center = $hotel['distance_to_center'];
 
-            echo "<tr>"
-                . "<td>" . $name . "</td>"
-                . "<td>" . $description . "</td>"
-                . "<td>" . $parking . "</td>"
-                . "<td>" . $vote . "</td>"
-                . "<td>" . $distance_to_center . " Km</td>"
-                . "</tr>";
+            // filtro per il parcheggio
+            if (!$filterParking || ($filterParking && $parking)) {
+                echo "<tr>"
+                    . "<td>" . $name . "</td>"
+                    . "<td>" . $description . "</td>"
+                    // se è presente parcheggio o no per il filtro 
+                    . "<td>" . ($parking ? "YES" : "NO") . "</td>"
+                    . "<td>" . $vote . "</td>"
+                    . "<td>" . $distance_to_center . " Km</td>"
+                    . "</tr>";
+            }
         }
         ?>
 
